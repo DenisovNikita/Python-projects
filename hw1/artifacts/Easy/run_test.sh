@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-python ../../fibonacci.py <test.in >test.out
+python ../../Easy/fibonacci.py <test.in >test.out
