@@ -11,10 +11,10 @@ with open('../artifacts/Hard/' + ('simple_ast.out' if DEBUG else 'fibonacci_ast.
 
     def get_label(ast_object, counter):
         fields = [x for x in ast.iter_fields(ast_object)]
-        label = fields[0][0]
+        label = "Node #" + str(counter) + ": " + fields[0][0]
         if fields[0][0] != 'body':
-            label += ': ' + ast.unparse(ast_object)
-        label += '_' + str(counter)
+            label += ' - ' + ast.unparse(ast_object)
+        # label += '|' + str(counter)
         color_type = {
             'body': 'black',
             'targets': 'blue',
@@ -43,6 +43,6 @@ with open('../artifacts/Hard/' + ('simple_ast.out' if DEBUG else 'fibonacci_ast.
 
     dfs(ast_object, '', 0)
 
-    G.layout()
+    G.layout(prog="dot")
 
     G.draw("../artifacts/Hard/" + ("simple_ast.png" if DEBUG else "fibonacci_ast.png"))
