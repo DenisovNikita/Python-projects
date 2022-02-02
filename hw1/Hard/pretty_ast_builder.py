@@ -17,10 +17,13 @@ with open('../artifacts/Hard/' + ('simple_ast.out' if DEBUG else 'fibonacci_ast.
         # label += '|' + str(counter)
         color_type = {
             'body': 'black',
+            'target' : 'blue',
             'targets': 'blue',
+            'left': 'blue',
             'value': 'red',
             'id': 'green',
-            'func': 'purple'
+            'func': 'purple',
+            'test': 'orange',
         }
         G.add_node(label, color=color_type.get(fields[0][0], 'pink'))
         return label, counter + 1
