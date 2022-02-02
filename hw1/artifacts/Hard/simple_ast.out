@@ -1,0 +1,8 @@
+[('body', [<ast.Assign object at 0x7fbce184cf70>, <ast.Expr object at 0x7fbce184cfd0>]), ('type_ignores', [])]
+	[('targets', [<ast.Name object at 0x7fbce184cfa0>]), ('value', <ast.Constant object at 0x7fbce184d000>), ('type_comment', None)]
+		[('id', 'greetings'), ('ctx', <ast.Store object at 0x7fbcf11ac1f0>)]
+		[('value', 'Hello, world!'), ('kind', None)]
+	[('value', <ast.Call object at 0x7fbce184d030>)]
+		[('func', <ast.Name object at 0x7fbce184d060>), ('args', [<ast.Name object at 0x7fbce184d090>]), ('keywords', [])]
+			[('id', 'print'), ('ctx', <ast.Load object at 0x7fbcf11ac190>)]
+			[('id', 'greetings'), ('ctx', <ast.Load object at 0x7fbcf11ac190>)]

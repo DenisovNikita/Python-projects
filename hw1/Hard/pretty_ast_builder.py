@@ -6,7 +6,7 @@ DEBUG = False
 with open('../Medium/simple.py' if DEBUG else '../Easy/fibonacci.py', 'r') as f:
     code = f.read()
 
-with open('../artifacts/Medium/' + ('simple_ast.out' if DEBUG else 'fibonacci_ast.out'), 'w') as f:
+with open('../artifacts/Hard/' + ('simple_ast.out' if DEBUG else 'fibonacci_ast.out'), 'w') as f:
     G = pgv.AGraph(directed=True)
 
     def get_label(ast_object, counter):
@@ -15,6 +15,14 @@ with open('../artifacts/Medium/' + ('simple_ast.out' if DEBUG else 'fibonacci_as
         if fields[0][0] != 'body':
             label += ': ' + ast.unparse(ast_object)
         label += '_' + str(counter)
+        color_type = {
+            'body': 'black',
+            'targets': 'blue',
+            'value': 'red',
+            'id': 'green',
+            'func': 'purple'
+        }
+        G.add_node(label, color=color_type.get(fields[0][0], 'pink'))
         return label, counter + 1
 
 
@@ -27,13 +35,13 @@ with open('../artifacts/Medium/' + ('simple_ast.out' if DEBUG else 'fibonacci_as
             if len([x for x in ast.iter_fields(child)]) > 0:
                 B, counter = get_label(child, counter)
                 G.add_edge(A, B)
-                dfs(child, tab + '\t', counter - 1)
+                counter = dfs(child, tab + '\t', counter - 1)
+        return counter
 
 
     ast_object = ast.parse(code)
 
-    counter = 0
-    dfs(ast_object, '', counter)
+    dfs(ast_object, '', 0)
 
     G.layout()
 
