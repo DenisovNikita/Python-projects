@@ -10,6 +10,7 @@ with open('simple.py' if DEBUG else '../Easy/fibonacci.py', 'r') as f:
 with open('../artifacts/Medium/' + ('simple_ast.out' if DEBUG else 'fibonacci_ast.out'), 'w') as f:
     G = nx.DiGraph()
 
+
     def get_label(ast_object, counter):
         fields = [x for x in ast.iter_fields(ast_object)]
         label = fields[0][0]
@@ -38,4 +39,3 @@ with open('../artifacts/Medium/' + ('simple_ast.out' if DEBUG else 'fibonacci_as
 
     nx.draw(G, with_labels=True)
     plt.savefig("../artifacts/Medium/" + ("simple_ast.png" if DEBUG else "fibonacci_ast.png"))
-
