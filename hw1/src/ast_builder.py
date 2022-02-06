@@ -1,11 +1,9 @@
 import networkx as nx
 import ast
 import matplotlib.pyplot as plt
+from ast_builder_tools import build_ast
 
 DEBUG = True
-
-with open('simple.py' if DEBUG else 'fibonacci.py', 'r') as f:
-    code = f.read()
 
 G = nx.DiGraph()
 
@@ -19,19 +17,14 @@ def get_label(ast_object, counter):
     return label, counter + 1
 
 
-def dfs(ast_object, tab, counter):
-    A, counter = get_label(ast_object, counter)
-    for child in ast.iter_child_nodes(ast_object):
-        if len([x for x in ast.iter_fields(child)]) > 0:
-            B, counter = get_label(child, counter)
-            G.add_edge(A, B)
-            dfs(child, tab + '\t', counter - 1)
+def add_edge(a, b):
+    G.add_edge(a, b)
 
 
-ast_object = ast.parse(code)
+with open('simple.py' if DEBUG else 'fibonacci.py', 'r') as f:
+    code = f.read()
 
-counter = 0
-dfs(ast_object, '', counter)
+build_ast(code, add_edge, get_label)
 
 nx.draw(G, with_labels=True)
 plt.savefig("../artifacts/Medium/" + ("simple_ast.png" if DEBUG else "fibonacci_ast.png"))
