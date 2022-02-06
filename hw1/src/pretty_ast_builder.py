@@ -1,17 +1,12 @@
 import pygraphviz as pgv
-import ast
 from ast_builder_tools import build_ast
 
-DEBUG = True
+DEBUG = False
 
 graph = pgv.AGraph(directed=True)
 
 
-def get_label(ast_object, counter):
-    fields = [x for x in ast.iter_fields(ast_object)]
-    label = "Node #" + str(counter) + ": " + fields[0][0]
-    if fields[0][0] != 'body':
-        label += ' - ' + ast.unparse(ast_object)
+def add_node(label, token_type):
     color_type = {
         'body': 'black',
         'target': 'blue',
@@ -22,18 +17,16 @@ def get_label(ast_object, counter):
         'func': 'purple',
         'test': 'orange',
     }
-    graph.add_node(label, color=color_type.get(fields[0][0], 'pink'))
-    return label, counter + 1
+    graph.add_node(label, color=color_type.get(token_type, 'pink'))
 
 
 def add_edge(a, b):
     graph.add_edge(a, b)
 
 
-with open('simple.py' if DEBUG else 'fibonacci.py', 'r') as f:
-    code = f.read()
+filename = 'simple.py' if DEBUG else 'fibonacci.py'
 
-build_ast(code, add_edge, get_label)
+build_ast(filename, add_node, add_edge)
 
 graph.layout(prog="dot")
 graph.draw("../artifacts/Hard/" + ("simple_ast.png" if DEBUG else "fibonacci_ast.png"))
