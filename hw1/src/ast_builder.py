@@ -7,12 +7,12 @@ DEBUG = False
 graph = nx.DiGraph()
 
 
-def add_edge(a, b):
-    graph.add_edge(a, b)
-
-
 def add_node(label, _):
     graph.add_node(label)
+    
+
+def add_edge(a, b):
+    graph.add_edge(a, b)
 
 
 filename = 'simple.py' if DEBUG else 'fibonacci.py'
