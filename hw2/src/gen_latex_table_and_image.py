@@ -88,7 +88,7 @@ input_table = [
     ['4', '5', '6'],
     ['7', '8', '9'],
 ]
-paths_to_directory_with_image = ['./images/']
+paths_to_directory_with_image = ['../../resources/']
 path_to_image = 'fibonacci_ast'
 
 latex = make_latex(paths_to_directory_with_image, input_table, path_to_image)
