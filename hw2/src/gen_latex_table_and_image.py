@@ -1,12 +1,12 @@
-def init():
+def init(graphics_paths):
     return LatexMaker('\\documentclass{article}\n'). \
-        add_packages(). \
+        add_packages(graphics_paths). \
         add_title(). \
         add_author()
 
 
-def make_latex(table):
-    return init().write_document(table)
+def make_latex(graphics_paths, table, image_path):
+    return init(graphics_paths).write_document(table, image_path)
 
 
 class LatexMaker:
@@ -17,8 +17,13 @@ class LatexMaker:
     def __str__(self):
         return self.s
 
-    def add_packages(self):
-        return LatexMaker(self.s + '\\usepackage[utf8]{inputenc}\n')
+    def add_packages(self, graphics_paths):
+        paths = ''.join([' {' + name + '} ' for name in graphics_paths])
+        return LatexMaker(self.s +
+                          '\\usepackage[utf8]{inputenc}\n' +
+                          '\\usepackage{graphicx}\n' +
+                          '\\usepackage[margin=0.5in]{geometry}\n' +
+                          '\\graphicspath{' + paths + '}\n')
 
     def add_title(self):
         return LatexMaker(self.s + '\\title{Test}\n')
@@ -52,6 +57,15 @@ class LatexMaker:
             write_table(table). \
             add_end('center')
 
+    def write_image(self, image_path):
+        return LatexMaker(self.s +
+                          '\\includegraphics[scale=0.15]{' + image_path + '}\n')
+
+    def write_center_image(self, image_path):
+        return self.add_begin('center'). \
+            write_image(image_path). \
+            add_end('center')
+
     def add_begin(self, name):
         return LatexMaker(self.s + '\\begin{' + name + '}\n')
 
@@ -61,10 +75,11 @@ class LatexMaker:
     def make_title(self):
         return LatexMaker(self.s + '\\maketitle\n')
 
-    def write_document(self, table):
+    def write_document(self, table, image_path):
         return self.add_begin('document'). \
             make_title(). \
             write_center_table(table). \
+            write_center_image(image_path). \
             add_end('document')
 
 
@@ -73,8 +88,10 @@ input_table = [
     ['4', '5', '6'],
     ['7', '8', '9'],
 ]
+paths_to_directory_with_image = ['./images/']
+path_to_image = 'fibonacci_ast'
 
-latex = make_latex(input_table)
+latex = make_latex(paths_to_directory_with_image, input_table, path_to_image)
 
-with open('../artefacts/easy/table.tex', 'w') as f:
+with open('../artefacts/medium/table_and_image.tex', 'w') as f:
     f.write(str(latex))
