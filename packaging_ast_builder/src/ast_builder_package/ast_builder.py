@@ -1,23 +1,26 @@
+__all__ = [
+    "draw_ast",
+]
+
 import networkx as nx
 import matplotlib.pyplot as plt
-from ast_builder_tools import build_ast
-
-DEBUG = False
-
-graph = nx.DiGraph()
+from ast_builder_package.ast_builder_tools import build_ast
+import inspect
+from ast_builder_package import fibonacci
 
 
-def add_node(label, _):
-    graph.add_node(label)
-    
+def draw_ast():
+    graph = nx.DiGraph()
 
-def add_edge(a, b):
-    graph.add_edge(a, b)
+    def add_node(label, _):
+        graph.add_node(label)
 
+    def add_edge(a, b):
+        graph.add_edge(a, b)
 
-filename = 'simple.py' if DEBUG else 'fibonacci.py'
+    code = inspect.getsource(fibonacci)
 
-build_ast(filename, add_node, add_edge)
+    build_ast(code, add_node, add_edge)
 
-nx.draw(graph, with_labels=True)
-plt.savefig("../../artifacts/Medium/" + ("simple_ast.png" if DEBUG else "fibonacci_ast.png"))
+    nx.draw(graph, with_labels=True)
+    plt.savefig("fibonacci_ast.png")

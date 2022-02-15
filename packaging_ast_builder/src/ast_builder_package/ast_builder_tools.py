@@ -5,12 +5,7 @@ __all__ = [
 import ast
 
 
-def build_ast(filename, add_node, add_edge):
-    def get_code():
-        with open(filename, 'r') as f:
-            code = f.read()
-        return code
-
+def build_ast(code, add_node, add_edge):
     def get_label(ast_object, counter):
         token_type = list(ast.iter_fields(ast_object))[0][0]
         label = "Node #" + str(counter) + "\n" + token_type
@@ -28,4 +23,4 @@ def build_ast(filename, add_node, add_edge):
                 counter = dfs(child, counter - 1)
         return counter
 
-    dfs(ast.parse(get_code()), 0)
+    dfs(ast.parse(code), 0)
