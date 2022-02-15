@@ -9,7 +9,7 @@ import inspect
 from ast_builder_package import fibonacci
 
 
-def draw_ast():
+def draw_ast(path):
     graph = nx.DiGraph()
 
     def add_node(label, _):
@@ -23,4 +23,4 @@ def draw_ast():
     build_ast(code, add_node, add_edge)
 
     nx.draw(graph, with_labels=True)
-    plt.savefig("fibonacci_ast.png")
+    plt.savefig(path)

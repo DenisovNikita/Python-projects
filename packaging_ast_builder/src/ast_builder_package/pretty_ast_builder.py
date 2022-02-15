@@ -8,7 +8,7 @@ import inspect
 from ast_builder_package import fibonacci
 
 
-def draw_pretty_ast():
+def draw_pretty_ast(path):
     graph = pgv.AGraph(directed=True)
 
     def add_node(label, token_type):
@@ -32,4 +32,4 @@ def draw_pretty_ast():
     build_ast(code, add_node, add_edge)
 
     graph.layout(prog="dot")
-    graph.draw("fibonacci_pretty_ast.png")
+    graph.draw(path)
