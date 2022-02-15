@@ -1,3 +1,6 @@
+import os
+from ast_builder_package.pretty_ast_builder import draw_pretty_ast
+
 def init(graphics_paths):
     return LatexMaker('\\documentclass{article}\n'). \
         add_packages(graphics_paths). \
@@ -59,7 +62,7 @@ class LatexMaker:
 
     def write_image(self, image_path):
         return LatexMaker(self.s +
-                          '\\includegraphics[scale=0.15]{' + image_path + '}\n')
+                          '\\includegraphics[width=20cm]{' + image_path + '}\n')
 
     def write_center_image(self, image_path):
         return self.add_begin('center'). \
@@ -88,10 +91,14 @@ input_table = [
     ['4', '5', '6'],
     ['7', '8', '9'],
 ]
-paths_to_directory_with_image = ['../../resources/']
-path_to_image = 'fibonacci_ast'
+image_dir = '../resources/'
+image_name = 'fibonacci_ast'
+image_ext = 'png'
+full_path = os.path.join(image_dir, image_name + '.' + image_ext)
+draw_pretty_ast(full_path)
+paths_to_directory_with_image = [os.path.join('..', image_dir)]
 
-latex = make_latex(paths_to_directory_with_image, input_table, path_to_image)
+latex = make_latex(paths_to_directory_with_image, input_table, image_name)
 
 with open('../artefacts/medium/table_and_image.tex', 'w') as f:
     f.write(str(latex))
