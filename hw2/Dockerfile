@@ -15,7 +15,8 @@ RUN pip install pygraphviz
 RUN pip install -i \
     https://test.pypi.org/simple/ ast-builder-package-DenisovNikita==0.1.0
 
-COPY artefacts root/artefacts
-COPY resources root/resources
-COPY src       root/src
-RUN  ./root/src/run_medium_task.sh
+COPY artefacts /root/artefacts
+COPY resources /root/resources
+COPY src       /root/src
+WORKDIR /root/src/
+RUN ./run_medium_task.sh
