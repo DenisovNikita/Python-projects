@@ -2,7 +2,34 @@ import numpy as np
 from test_matrix import test
 
 
-class Matrix(np.lib.mixins.NDArrayOperatorsMixin):
+class FileWriter:
+    def write(self, path):
+        with open(path, "w") as f:
+            f.write(str(self))
+
+
+class PrettyView:
+    def __str__(self):
+        return "Matrix:\n" + str(self._matrix)
+
+
+class Getter:
+    def get(self):
+        return self._matrix
+
+
+class Setter:
+    def set(self, value):
+        self._matrix = value
+
+
+class Matrix(
+    np.lib.mixins.NDArrayOperatorsMixin,
+    FileWriter,
+    PrettyView,
+    Getter,
+    Setter
+):
     def __init__(self, value):
         self._matrix = value
 
@@ -24,3 +51,12 @@ class Matrix(np.lib.mixins.NDArrayOperatorsMixin):
 
 
 test(Matrix, "../artefacts/medium")
+
+# mixins tests:
+#
+# a = Matrix([1, 2])
+# a.write("../artefacts/medium/kek.txt")
+# print(str(a))
+# a.set([3, 4, 5])
+# print(a.get())
+# print(a)
