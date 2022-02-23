@@ -1,0 +1,4 @@
+hash(AB) == 42
+hash(CD) == 42
+hash(A)  == 42
+hash(C)  == 42

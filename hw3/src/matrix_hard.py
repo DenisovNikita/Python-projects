@@ -85,3 +85,5 @@ class Matrix(Hash):
 # print(d.matrix)
 # print(ab.matrix)
 # print(cd.matrix)
+# print(hash(ab), hash(cd))
+# print(hash(a), hash(b))
