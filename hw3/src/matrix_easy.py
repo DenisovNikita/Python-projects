@@ -1,4 +1,4 @@
-import numpy as np
+from test_matrix import test
 
 
 class Matrix:
@@ -64,18 +64,4 @@ class Matrix:
         return Matrix(res)
 
 
-np.random.seed(0)
-a = Matrix(np.random.randint(0, 10, (10, 10)))
-b = Matrix(np.random.randint(0, 10, (10, 10)))
-
-with open("../artefacts/easy/matrix+.txt", "w") as f:
-    res = a + b
-    f.write(str(res.matrix))
-
-with open("../artefacts/easy/matrix*.txt", "w") as f:
-    res = a * b
-    f.write(str(res.matrix))
-
-with open("../artefacts/easy/matrix@.txt", "w") as f:
-    res = a @ b
-    f.write(str(res.matrix))
+test(Matrix, "../artefacts/easy")
