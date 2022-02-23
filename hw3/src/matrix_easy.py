@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Matrix:
     def __init__(self, value):
         self._matrix = value
@@ -13,14 +14,22 @@ class Matrix:
         self._matrix = value
 
     def getDimensions(self):
-        return len(self._matrix), len(self._matrix[0])
+        n = len(self._matrix)
+        if n == 0:
+            return 0, 0
+        return n, len(self._matrix[0])
 
     def getElement(self, i, j):
         return self._matrix[i][j]
 
+    def checkDimensions(self, n, m):
+        nn, mm = self.getDimensions()
+        if n != nn or m != mm:
+            raise Exception("Dimensions do not match!")
+
     def __add__(self, other):
         n, m = self.getDimensions()
-        # other.checkDimensions(n, m)
+        other.checkDimensions(n, m)
         res = []
         for i in range(n):
             row = []
@@ -31,7 +40,7 @@ class Matrix:
 
     def __mul__(self, other):
         n, m = self.getDimensions()
-        # other.checkDimensions(n, m)
+        other.checkDimensions(n, m)
         res = []
         for i in range(n):
             row = []
@@ -43,7 +52,8 @@ class Matrix:
     def __matmul__(self, other):
         n, k1 = self.getDimensions()
         k2, m = other.getDimensions()
-        # checkEqual(k1, k2)
+        if k1 != k2:
+            raise Exception("Matrices cannot be multiplied!")
         res = []
         for i in range(n):
             row = [0] * m
