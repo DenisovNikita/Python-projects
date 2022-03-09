@@ -1,2 +1,3 @@
-seconds sync: 2.9519448280334473
-seconds threads: 3.3092899322509766
+seconds sync: 2.804617166519165
+seconds threads: 3.167847156524658
+seconds processes: 0.7797935009002686
