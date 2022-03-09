@@ -1,1 +1,2 @@
 seconds sync: 2.9519448280334473
+seconds threads: 3.3092899322509766
