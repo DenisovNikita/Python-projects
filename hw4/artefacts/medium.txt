@@ -1,0 +1,90 @@
+Threads with n_jobs = 1 is running
+Finished in 0.8375773429870605 seconds
+
+Processes with n_jobs = 1 is running
+Finished in 1.3750569820404053 seconds
+
+Threads with n_jobs = 2 is running
+Finished in 0.8989357948303223 seconds
+
+Processes with n_jobs = 2 is running
+Finished in 1.3499398231506348 seconds
+
+Threads with n_jobs = 3 is running
+Finished in 0.8584377765655518 seconds
+
+Processes with n_jobs = 3 is running
+Finished in 1.2755260467529297 seconds
+
+Threads with n_jobs = 4 is running
+Finished in 0.8893828392028809 seconds
+
+Processes with n_jobs = 4 is running
+Finished in 1.2846598625183105 seconds
+
+Threads with n_jobs = 5 is running
+Finished in 0.8977818489074707 seconds
+
+Processes with n_jobs = 5 is running
+Finished in 1.3016948699951172 seconds
+
+Threads with n_jobs = 6 is running
+Finished in 0.8483066558837891 seconds
+
+Processes with n_jobs = 6 is running
+Finished in 1.249934434890747 seconds
+
+Threads with n_jobs = 7 is running
+Finished in 0.865349292755127 seconds
+
+Processes with n_jobs = 7 is running
+Finished in 1.2937731742858887 seconds
+
+Threads with n_jobs = 8 is running
+Finished in 0.8803496360778809 seconds
+
+Processes with n_jobs = 8 is running
+Finished in 1.252251148223877 seconds
+
+Threads with n_jobs = 9 is running
+Finished in 0.9249095916748047 seconds
+
+Processes with n_jobs = 9 is running
+Finished in 1.2485873699188232 seconds
+
+Threads with n_jobs = 10 is running
+Finished in 0.9527149200439453 seconds
+
+Processes with n_jobs = 10 is running
+Finished in 1.3203048706054688 seconds
+
+Threads with n_jobs = 11 is running
+Finished in 0.900001049041748 seconds
+
+Processes with n_jobs = 11 is running
+Finished in 1.309798002243042 seconds
+
+Threads with n_jobs = 12 is running
+Finished in 0.9884886741638184 seconds
+
+Processes with n_jobs = 12 is running
+Finished in 1.3937015533447266 seconds
+
+Threads with n_jobs = 13 is running
+Finished in 0.8721516132354736 seconds
+
+Processes with n_jobs = 13 is running
+Finished in 1.3243000507354736 seconds
+
+Threads with n_jobs = 14 is running
+Finished in 0.9315223693847656 seconds
+
+Processes with n_jobs = 14 is running
+Finished in 1.3750660419464111 seconds
+
+Threads with n_jobs = 15 is running
+Finished in 0.9157443046569824 seconds
+
+Processes with n_jobs = 15 is running
+Finished in 1.3265447616577148 seconds
+
