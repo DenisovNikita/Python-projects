@@ -9,3 +9,7 @@ Example for simple program
 Example for program which calculates fibonacci sequence
 
 ![](../hw1/artifacts/Hard/fibonacci_ast.png)
+
+# Usage
+
+You need just install [this](...) package. Then import function `...` and just call it!
