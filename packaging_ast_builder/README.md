@@ -1,6 +1,6 @@
 # AST builder package
 
-This is an AST builder package for python programs. Draws AST graph in pretty format.
+This is an AST builder package for python programs. It can draw an AST graph in pretty format.
 
 Example for simple program
 
