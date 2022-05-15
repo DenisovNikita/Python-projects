@@ -12,4 +12,4 @@ Example for program which calculates fibonacci sequence
 
 # Usage
 
-You need just install [this](...) package. Then import function `...` and just call it!
+You need just install [this](https://test.pypi.org/project/ast-builder-package-DenisovNikita/) package. Then import function `draw_pretty_ast` and just call it! Function requires single parameter: a path to file with python script.
