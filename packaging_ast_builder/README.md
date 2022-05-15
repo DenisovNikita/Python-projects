@@ -4,7 +4,7 @@ This is an AST builder package for python programs. Draws AST graph in pretty fo
 
 Example for simple program
 
-![](../hw1/artifacts/Hard/simple.png)
+![](../hw1/artifacts/Hard/simple_ast.png)
 
 Example for program which calculates fibonacci sequence
 
